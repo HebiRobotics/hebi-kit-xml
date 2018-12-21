@@ -72,7 +72,11 @@ The actuator element represents actuators such as the X5-4.  It is assumed to ha
 The link element refers to a parameterized rigid body with two parameters (extension and twist).  All links have one output interface.
 
 **Required attributes:**
-- `type` (string/enum) the only currently supported value is X5
+- `type` (string/enum) Currently supported values:
+  - X5
+  - X5Inline
+  - X5InlineIn
+  - X5InlineOut
 - `extension` (floating point formula, meters)
 - `twist` (floating point formula, radians)
 

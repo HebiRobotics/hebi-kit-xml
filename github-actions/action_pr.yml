@@ -1,0 +1,13 @@
+name: "Action - Pull Request"
+description: "Create the pull request"
+author: "singh.hardik1997@gmail.com"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  color: purple
+  icon: git-pull-request
+
+

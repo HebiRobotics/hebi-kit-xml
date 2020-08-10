@@ -1,10 +1,25 @@
 name: Auto-PR Workflow
-on: push
+on:
+  push:
+    branches: [hardik/actions-setup]
 
 jobs:
   build:
     name: Auto-PR Action, Python
     runs-on: ubuntu-16.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: ./github-actions 
+
+
+
+
+    # # Runs a single command using the runners shell
+    # - name: Run a one-line script
+    #   run: echo Hello, world!
+
+    # # Runs a set of commands using the runners shell
+    # - name: Run a multi-line script
+    #   run: |
+    #     echo Add other actions to build,
+    #     echo test, and deploy your project.

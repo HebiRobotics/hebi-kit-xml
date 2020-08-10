@@ -6,6 +6,12 @@ echo "::set-output name=time::$time"
 
 ls
 
+echo "Checkpoint #1"
+git clone git@github.com:HebiRobotics/hebi-python-examples.git
+echo "Checkpoint #2"
+ls 
+
+
 # sh -c "echo Starting Auto-PR process"
 
 # sh -c "mkdir test-folder"

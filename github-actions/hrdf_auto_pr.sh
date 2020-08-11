@@ -7,7 +7,7 @@ echo "::set-output name=time::$time"
 ls
 
 echo "Checkpoint #1"
-git clone git@github.com:HebiRobotics/hebi-python-examples.git
+sh -c "git clone git@github.com:HebiRobotics/hebi-python-examples.git"
 echo "Checkpoint #2"
 ls 
 

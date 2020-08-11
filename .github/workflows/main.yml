@@ -26,20 +26,8 @@ jobs:
 
       - name: Copy over latest hrdf folder
         run: |
-          cp hrdf hebi-python-examples/kits
-          ls hebi-python-examples/kits
-
-
-
-
-
-
-
-      # # Run the script
-      # - name: Run the hrdf_auto_pr.sh script
-      #   uses: ./github-actions
-      #   with:
-      #     git-version: latest
+          cp -R hrdf hebi-python-examples/kits/arm
+          ls hebi-python-examples/kits/arm/hrdf
 
       # - name: Create Pull Request
       # uses: peter-evans/create-pull-request@v3.1.0

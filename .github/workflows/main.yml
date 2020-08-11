@@ -15,7 +15,7 @@ jobs:
           git config user.name 'Hardik Singh'
           git config user.email 'singh.hardik1997@gmail.com'
           git clone https://github.com/HebiRobotics/hebi-python-examples.git
-          echo "~~~~~~ We've done the cloning ~~~~~"
+          echo "~~~~~~ We're done with the cloning. ~~~~~"
       
       # TODO: This step will be removed once this is not longer a test branch
       - name: Switch branch
@@ -23,27 +23,32 @@ jobs:
           cd hebi-python-examples
           git checkout hardik/auto_pr_hrdfs
           cd ..
+          echo "~~~~~~ We've switched branches. ~~~~~"
+
 
       - name: Copy over latest hrdf folder
         run: |
           cp -R hrdf hebi-python-examples/kits/arm
           echo "~ The new list of hrdf files:"
           ls hebi-python-examples/kits/arm/hrdf
+          echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
 
-      - name: Push the new changes onto the branch
-        run: |
-          cd hebi-python-examples
-          git config user.name 'Hardik Singh'
-          git config user.email 'singh.hardik1997@gmail.com'
-          git add kits/arm/hrdf
-          git commit -m "HRDF Update"
-          git push origin hardik/auto_pr_hrdfs
+
+      # - name: Push the new changes onto the branch
+      #   run: |
+      #     cd hebi-python-examples
+      #     git config user.name 'Hardik Singh'
+      #     git config user.email 'singh.hardik1997@gmail.com'
+      #     git add kits/arm/hrdf
+      #     git commit -m "HRDF Update"
+      #     git push origin hardik/auto_pr_hrdfs
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.1.0
         with:
           # GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)
-          #token: # optional, default is ${{ github.token }}
+          token: ${{ secrets.HARDIK_TOKEN_PYTHON }} 
+            # optional, default is ${{ github.token }}
           
           # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
           path: ./hebi-python-examples # optional

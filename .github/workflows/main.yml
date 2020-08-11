@@ -58,7 +58,8 @@ jobs:
           #commit-message: # optional, default is [create-pull-request] automated change
           
           # The committer name and email address in the format `Display Name <email@address.com>`. Defaults to the GitHub Actions bot user.
-          #committer: # optional, default is GitHub <noreply@github.com>
+          committer: Hardik Singh <singh.hardik1997@gmail.com>
+            # optional, default is GitHub <noreply@github.com>
           
           # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
           #author: # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>

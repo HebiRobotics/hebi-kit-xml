@@ -33,6 +33,8 @@ jobs:
       - name: Push the new changes onto the branch
         run: |
           cd hebi-python-examples
+          git config user.name 'Hardik Singh'
+          git config user.email 'singh.hardik1997@gmail.com'
           git add kits/arm/hrdf
           git commit -m "HRDF Update"
           git push origin hardik/auto_pr_hrdfs

@@ -62,20 +62,21 @@ jobs:
             # optional, default is GitHub <noreply@github.com>
           
           # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
-          #author: # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          author: Hardik Singh <singh.hardik1997@gmail.com>
+            # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           
           # Add `Signed-off-by` line by the committer at the end of the commit log message.
           #signoff: # optional
           
           # The pull request branch name.
-          branch: hardik/auto_pr_hrdfs
+          branch: hardik/automatic_pull_request
             # optional, default is create-pull-request/patch
           
           # The branch suffix type when using the alternative branching strategy.
           #branch-suffix: # optional
           
           # The pull request base branch. Defaults to the branch checked out in the workflow.
-          base: master 
+          #base: master 
             # optional
           
           # A fork of the checked out parent repository to which the pull request branch will be pushed. e.g. `owner/repo-fork`. The pull request will be created to merge the fork's branch into the parent's base.

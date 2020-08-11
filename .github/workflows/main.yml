@@ -12,8 +12,8 @@ jobs:
       
       - name: Clone the python repo
         run: |
-          git config user.name 'Hardik Singh'
-          git config user.email 'singh.hardik1997@gmail.com'
+          git config --global user.name 'Hardik Singh'
+          git config --global user.email 'singh.hardik1997@gmail.com'
           git clone https://github.com/HebiRobotics/hebi-python-examples.git
           echo "~~~~~~ We're done with the cloning. ~~~~~"
       

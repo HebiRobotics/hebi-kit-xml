@@ -68,7 +68,7 @@ jobs:
           #signoff: # optional
           
           # The pull request branch name.
-          branch: hardik/automatic_pull_request
+          branch: hardik/auto_pr_hrdfs
             # optional, default is create-pull-request/patch
           
           # The branch suffix type when using the alternative branching strategy.

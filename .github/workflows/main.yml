@@ -47,6 +47,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_PYTHON }} 
+          GITHUB_ACTOR: HardikSingh97
         with:
           # GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)
           token: $GITHUB_TOKEN # optional, default is ${{ github.token }}
@@ -62,7 +63,7 @@ jobs:
             # optional, default is GitHub <noreply@github.com>
           
           # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
-          author: Hardik Singh <singh.hardik1997@gmail.com>
+          #author: Hardik Singh <singh.hardik1997@gmail.com>
             # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           
           # Add `Signed-off-by` line by the committer at the end of the commit log message.

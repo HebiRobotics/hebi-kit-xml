@@ -19,7 +19,10 @@ jobs:
       
       # TODO: This step will be removed once this is not longer a test branch
       - name: Switch branch
-        run: git checkout hardik/auto_pr_hrdfs
+        run: |
+          cd hebi-python-examples
+          git checkout hardik/auto_pr_hrdfs
+          cd ..
 
       - name: Copy over latest hrdf folder
         run: |

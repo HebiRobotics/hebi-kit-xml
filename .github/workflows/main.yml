@@ -63,7 +63,8 @@ jobs:
             # optional, default is GitHub <noreply@github.com>
           
           # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
-          #author: Hardik Singh <singh.hardik1997@gmail.com>
+          author: HardikSingh97 <HardikSingh97@users.noreply.github.com>
+            # Hardik Singh <singh.hardik1997@gmail.com>
             # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           
           # Add `Signed-off-by` line by the committer at the end of the commit log message.

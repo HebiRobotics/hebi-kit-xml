@@ -29,6 +29,7 @@ jobs:
           cp -R hrdf hebi-python-examples/kits/arm
           echo "~ The new list of hrdf files:"
           ls hebi-python-examples/kits/arm/hrdf
+          git checkout master
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.1.0

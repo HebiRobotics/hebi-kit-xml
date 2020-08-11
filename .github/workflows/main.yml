@@ -14,7 +14,7 @@ jobs:
         run: |
           git config user.name 'Hardik Singh'
           git config user.email 'singh.hardik1997@gmail.com'
-          git clone https://github.com/HebiRobotics/hebi-python-examples.gi
+          git clone https://github.com/HebiRobotics/hebi-python-examples.git
           echo "~~~~~~ We've done the cloning ~~~~~"
       
       # TODO: This step will be removed once this is not longer a test branch

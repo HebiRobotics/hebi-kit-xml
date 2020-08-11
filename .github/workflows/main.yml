@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_PYTHON }} 
         with:
           # GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)
-          #token: # optional, default is ${{ github.token }}
+          token: $GITHUB_TOKEN # optional, default is ${{ github.token }}
           
           # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
           path: ./hebi-python-examples # optional

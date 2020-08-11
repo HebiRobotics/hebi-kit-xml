@@ -10,13 +10,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Use Git in the Workflow itself
+      - name: Clone the python repo
         run: |
           git config user.name 'Hardik Singh'
           git config user.email 'singh.hardik1997@gmail.com'
-          git clone https://github.com/HebiRobotics/hebi-python-examples.git
+          git clone https://github.com/HebiRobotics/hebi-python-examples.gi
           echo "~~~~~~ We've done the cloning ~~~~~"
-          ls
+      
+      # TODO: This step will be removed once this is not longer a test branch
+      - name: Switch branch
+        run: git checkout hardik/auto_pr_hrdfs
+
+      - name: Copy over latest hrdf folder
+        run: |
+          cp hrdf hebi-python-examples/kits
+          ls hebi-python-examples/kits
 
 
 

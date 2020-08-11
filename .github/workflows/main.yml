@@ -29,7 +29,6 @@ jobs:
           cp -R hrdf hebi-python-examples/kits/arm
           echo "~ The new list of hrdf files:"
           ls hebi-python-examples/kits/arm/hrdf
-          cd hebi-python-examples
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.1.0
@@ -38,7 +37,7 @@ jobs:
           #token: # optional, default is ${{ github.token }}
           
           # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
-          #path: # optional
+          path: ./hebi-python-examples # optional
           
           # The message to use when committing changes.
           #commit-message: # optional, default is [create-pull-request] automated change
@@ -90,4 +89,4 @@ jobs:
           #milestone: # optional
           
           # Create a draft pull request
-          #draft: # optional
+          draft: true # optional

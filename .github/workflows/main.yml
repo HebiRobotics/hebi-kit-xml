@@ -30,8 +30,10 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_TEST }} 
         with:
-          token: ${{ secrets.HARDIK_TOKEN_TEST }} 
+          #token: ${{ secrets.HARDIK_TOKEN_TEST }} 
           path: ./hello-github-actions
           #branch: hardik/automatic_pull_request
           title: Update to list of HRDF files

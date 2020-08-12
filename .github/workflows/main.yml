@@ -32,6 +32,7 @@ jobs:
         uses: peter-evans/create-pull-request@v2
         env:
           GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_TEST }} 
+          GITHUB_ACTOR: HardikSingh97
         with:
           #token: ${{ secrets.HARDIK_TOKEN_TEST }} 
           path: ./hello-github-actions

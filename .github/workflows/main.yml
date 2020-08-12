@@ -16,14 +16,6 @@ on:
               git config --global user.email 'singh.hardik1997@gmail.com'
               git clone https://github.com/HardikSingh97/hello-github-actions.git
               echo "~~~~~~ We're done with the cloning. ~~~~~"
-          
-          # TODO: This step will be removed once this is not longer a test branch
-          # - name: Switch branch
-          #   run: |
-          #     cd hello-github-actions
-          #     git checkout hardik/auto_pr_hrdfs
-          #     cd ..
-          #     echo "~~~~~~ We've switched branches. ~~~~~"
     
     
           - name: Copy over latest hrdf folder
@@ -33,15 +25,6 @@ on:
               ls hello-github-actions
               echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
     
-    
-          # - name: Push the new changes onto the branch
-          #   run: |
-          #     cd hebi-python-examples
-          #     git config user.name 'Hardik Singh'
-          #     git config user.email 'singh.hardik1997@gmail.com'
-          #     git add kits/arm/hrdf
-          #     git commit -m "HRDF Update"
-          #     git push origin hardik/auto_pr_hrdfs
     
           - name: Create Pull Request
             uses: peter-evans/create-pull-request@v3.1.0

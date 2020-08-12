@@ -28,17 +28,24 @@ jobs:
           echo ${{ github.actor }}
 
 
-      - name: Create Pull Request
+
+      - name: Createt Pull Request
         uses: peter-evans/create-pull-request@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_TEST }} 
-          GITHUB_ACTOR: HardikSingh97
         with:
-          #token: ${{ secrets.HARDIK_TOKEN_TEST }} 
-          path: ./hello-github-actions
-          #branch: hardik/automatic_pull_request
-          title: Update to list of HRDF files
-          draft: true 
+          token: ${{ secrets.HARDIK_TOKEN_TEST }}
+
+
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v3
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_TEST }} 
+      #     GITHUB_ACTOR: HardikSingh97
+      #   with:
+      #     #token: ${{ secrets.HARDIK_TOKEN_TEST }} 
+      #     path: ./hello-github-actions
+      #     #branch: hardik/automatic_pull_request
+      #     title: Update to list of HRDF files
+      #     draft: true 
 
               
 

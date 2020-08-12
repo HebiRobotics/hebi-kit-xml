@@ -3,109 +3,216 @@ on:
   push:
     branches: [hardik/actions-setup]
 
-jobs:
-  build:
-    name: Auto-PR Action, Python
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+    jobs:
+      build:
+        name: Auto-PR Action, Tester to my Repo
+        runs-on: ubuntu-16.04
+        steps:
+          - uses: actions/checkout@v2
+          
+          - name: Clone the python repo
+            run: |
+              git config --global user.name 'Hardik Singh'
+              git config --global user.email 'singh.hardik1997@gmail.com'
+              git clone https://github.com/HardikSingh97/hello-github-actions.git
+              echo "~~~~~~ We're done with the cloning. ~~~~~"
+          
+          # TODO: This step will be removed once this is not longer a test branch
+          # - name: Switch branch
+          #   run: |
+          #     cd hello-github-actions
+          #     git checkout hardik/auto_pr_hrdfs
+          #     cd ..
+          #     echo "~~~~~~ We've switched branches. ~~~~~"
+    
+    
+          - name: Copy over latest hrdf folder
+            run: |
+              cp -R hrdf hello-github-actions
+              echo "~~~ The new list of hrdf files: ~~~"
+              ls hello-github-actions
+              echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
+    
+    
+          # - name: Push the new changes onto the branch
+          #   run: |
+          #     cd hebi-python-examples
+          #     git config user.name 'Hardik Singh'
+          #     git config user.email 'singh.hardik1997@gmail.com'
+          #     git add kits/arm/hrdf
+          #     git commit -m "HRDF Update"
+          #     git push origin hardik/auto_pr_hrdfs
+    
+          - name: Create Pull Request
+            uses: peter-evans/create-pull-request@v3.1.0
+            with:
+              # GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)
+              token: ${{ secrets.HARDIK_TOKEN_TEST }} 
+              
+              # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
+              path: ./hello-github-actions
+              
+              # The pull request branch name.
+              branch: hardik/automatic_pull_request
+                # optional, default is create-pull-request/patch
+
+              # The title of the pull request.
+              title: Update to list of HRDF files
+              # optional, default is Changes by create-pull-request action
+
+              # Create a draft pull request
+              draft: true # optional
+              # The message to use when committing changes.
+              #commit-message: # optional, default is [create-pull-request] automated change
+              
+              # The committer name and email address in the format `Display Name <email@address.com>`. Defaults to the GitHub Actions bot user.
+              #committer: Hardik Singh <singh.hardik1997@gmail.com>
+                # optional, default is GitHub <noreply@github.com>
+              
+              # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
+              #author: HardikSingh97 <HardikSingh97@users.noreply.github.com>
+                # Hardik Singh <singh.hardik1997@gmail.com>
+                # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+              
+              # Add `Signed-off-by` line by the committer at the end of the commit log message.
+              #signoff: # optional           
+              
+              # The branch suffix type when using the alternative branching strategy.
+              #branch-suffix: # optional
+              
+              # The pull request base branch. Defaults to the branch checked out in the workflow.
+              #base: master 
+                # optional
+              
+              # A fork of the checked out parent repository to which the pull request branch will be pushed. e.g. `owner/repo-fork`. The pull request will be created to merge the fork's branch into the parent's base.
+              #push-to-fork: # optional
+              
+              # The body of the pull request.
+              #body: # optional, default is Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
+              
+              # A comma or newline separated list of labels.
+              #labels: # optional
+              
+              # A comma or newline separated list of assignees (GitHub usernames).
+              #assignees: # optional
+              
+              # A comma or newline separated list of reviewers (GitHub usernames) to request a review from.
+              #reviewers: HardikSingh97 
+                # optional
+              
+              # A comma or newline separated list of GitHub teams to request a review from. Note that a `repo` scoped Personal Access Token (PAT) may be required.
+              #team-reviewers: # optional
+              
+              # The number of the milestone to associate the pull request with.
+              #milestone: # optional
+              
+
+
+
+
+# jobs:
+#   build:
+#     name: Auto-PR Action, Python
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
       
-      - name: Clone the python repo
-        run: |
-          git config --global user.name 'Hardik Singh'
-          git config --global user.email 'singh.hardik1997@gmail.com'
-          git clone https://github.com/HebiRobotics/hebi-python-examples.git
-          echo "~~~~~~ We're done with the cloning. ~~~~~"
+#       - name: Clone the python repo
+#         run: |
+#           git config --global user.name 'Hardik Singh'
+#           git config --global user.email 'singh.hardik1997@gmail.com'
+#           git clone https://github.com/HebiRobotics/hebi-python-examples.git
+#           echo "~~~~~~ We're done with the cloning. ~~~~~"
       
-      # TODO: This step will be removed once this is not longer a test branch
-      - name: Switch branch
-        run: |
-          cd hebi-python-examples
-          git checkout hardik/auto_pr_hrdfs
-          cd ..
-          echo "~~~~~~ We've switched branches. ~~~~~"
+#       # TODO: This step will be removed once this is not longer a test branch
+#       - name: Switch branch
+#         run: |
+#           cd hebi-python-examples
+#           git checkout hardik/auto_pr_hrdfs
+#           cd ..
+#           echo "~~~~~~ We've switched branches. ~~~~~"
 
 
-      - name: Copy over latest hrdf folder
-        run: |
-          cp -R hrdf hebi-python-examples/kits/arm
-          echo "~ The new list of hrdf files:"
-          ls hebi-python-examples/kits/arm/hrdf
-          echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
+#       - name: Copy over latest hrdf folder
+#         run: |
+#           cp -R hrdf hebi-python-examples/kits/arm
+#           echo "~ The new list of hrdf files:"
+#           ls hebi-python-examples/kits/arm/hrdf
+#           echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
 
 
-      # - name: Push the new changes onto the branch
-      #   run: |
-      #     cd hebi-python-examples
-      #     git config user.name 'Hardik Singh'
-      #     git config user.email 'singh.hardik1997@gmail.com'
-      #     git add kits/arm/hrdf
-      #     git commit -m "HRDF Update"
-      #     git push origin hardik/auto_pr_hrdfs
+#       # - name: Push the new changes onto the branch
+#       #   run: |
+#       #     cd hebi-python-examples
+#       #     git config user.name 'Hardik Singh'
+#       #     git config user.email 'singh.hardik1997@gmail.com'
+#       #     git add kits/arm/hrdf
+#       #     git commit -m "HRDF Update"
+#       #     git push origin hardik/auto_pr_hrdfs
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_PYTHON }} 
-          GITHUB_ACTOR: HardikSingh97
-        with:
-          # GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)
-          token: $GITHUB_TOKEN # optional, default is ${{ github.token }}
+#       - name: Create Pull Request
+#         uses: peter-evans/create-pull-request@v3.1.0
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_PYTHON }} 
+#           GITHUB_ACTOR: HardikSingh97
+#         with:
+#           # GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)
+#           token: $GITHUB_TOKEN # optional, default is ${{ github.token }}
           
-          # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
-          path: ./hebi-python-examples # optional
+#           # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
+#           path: ./hebi-python-examples # optional
           
-          # The message to use when committing changes.
-          #commit-message: # optional, default is [create-pull-request] automated change
+#           # The message to use when committing changes.
+#           #commit-message: # optional, default is [create-pull-request] automated change
           
-          # The committer name and email address in the format `Display Name <email@address.com>`. Defaults to the GitHub Actions bot user.
-          committer: Hardik Singh <singh.hardik1997@gmail.com>
-            # optional, default is GitHub <noreply@github.com>
+#           # The committer name and email address in the format `Display Name <email@address.com>`. Defaults to the GitHub Actions bot user.
+#           committer: Hardik Singh <singh.hardik1997@gmail.com>
+#             # optional, default is GitHub <noreply@github.com>
           
-          # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
-          author: HardikSingh97 <HardikSingh97@users.noreply.github.com>
-            # Hardik Singh <singh.hardik1997@gmail.com>
-            # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+#           # The author name and email address in the format `Display Name <email@address.com>`. Defaults to the user who triggered the workflow run.
+#           author: HardikSingh97 <HardikSingh97@users.noreply.github.com>
+#             # Hardik Singh <singh.hardik1997@gmail.com>
+#             # optional, default is ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           
-          # Add `Signed-off-by` line by the committer at the end of the commit log message.
-          #signoff: # optional
+#           # Add `Signed-off-by` line by the committer at the end of the commit log message.
+#           #signoff: # optional
           
-          # The pull request branch name.
-          branch: hardik/automatic_pull_request
-            # optional, default is create-pull-request/patch
+#           # The pull request branch name.
+#           branch: hardik/automatic_pull_request
+#             # optional, default is create-pull-request/patch
           
-          # The branch suffix type when using the alternative branching strategy.
-          #branch-suffix: # optional
+#           # The branch suffix type when using the alternative branching strategy.
+#           #branch-suffix: # optional
           
-          # The pull request base branch. Defaults to the branch checked out in the workflow.
-          #base: master 
-            # optional
+#           # The pull request base branch. Defaults to the branch checked out in the workflow.
+#           #base: master 
+#             # optional
           
-          # A fork of the checked out parent repository to which the pull request branch will be pushed. e.g. `owner/repo-fork`. The pull request will be created to merge the fork's branch into the parent's base.
-          #push-to-fork: # optional
+#           # A fork of the checked out parent repository to which the pull request branch will be pushed. e.g. `owner/repo-fork`. The pull request will be created to merge the fork's branch into the parent's base.
+#           #push-to-fork: # optional
           
-          # The title of the pull request.
-          title: Update to list of HRDF files
-          # optional, default is Changes by create-pull-request action
+#           # The title of the pull request.
+#           title: Update to list of HRDF files
+#           # optional, default is Changes by create-pull-request action
           
-          # The body of the pull request.
-          #body: # optional, default is Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
+#           # The body of the pull request.
+#           #body: # optional, default is Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
           
-          # A comma or newline separated list of labels.
-          #labels: # optional
+#           # A comma or newline separated list of labels.
+#           #labels: # optional
           
-          # A comma or newline separated list of assignees (GitHub usernames).
-          #assignees: # optional
+#           # A comma or newline separated list of assignees (GitHub usernames).
+#           #assignees: # optional
           
-          # A comma or newline separated list of reviewers (GitHub usernames) to request a review from.
-          reviewers: HardikSingh97 
-            # optional
+#           # A comma or newline separated list of reviewers (GitHub usernames) to request a review from.
+#           reviewers: HardikSingh97 
+#             # optional
           
-          # A comma or newline separated list of GitHub teams to request a review from. Note that a `repo` scoped Personal Access Token (PAT) may be required.
-          #team-reviewers: # optional
+#           # A comma or newline separated list of GitHub teams to request a review from. Note that a `repo` scoped Personal Access Token (PAT) may be required.
+#           #team-reviewers: # optional
           
-          # The number of the milestone to associate the pull request with.
-          #milestone: # optional
+#           # The number of the milestone to associate the pull request with.
+#           #milestone: # optional
           
-          # Create a draft pull request
-          draft: true # optional
+#           # Create a draft pull request
+#           draft: true # optional

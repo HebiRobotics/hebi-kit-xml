@@ -24,6 +24,8 @@ jobs:
           echo "~~~ The new list of hrdf files: ~~~"
           ls hello-github-actions
           echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
+          cd hello-github-action
+          echo ${{ github.actor }}
 
 
       - name: Create Pull Request
@@ -34,6 +36,7 @@ jobs:
           #branch: hardik/automatic_pull_request
           title: Update to list of HRDF files
           draft: true 
+
               
 
 

@@ -31,7 +31,7 @@ jobs:
         with:
           token: ${{ secrets.HARDIK_TOKEN_TEST }} 
           path: ./hello-github-actions
-          branch: hardik/automatic_pull_request
+          #branch: hardik/automatic_pull_request
           title: Update to list of HRDF files
           draft: true 
               

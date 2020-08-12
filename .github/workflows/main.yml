@@ -1,7 +1,7 @@
 name: Auto-PR Workflow
-  on:
-    push:
-      branches: [hardik/actions-setup]
+on:
+  push:
+    branches: [hardik/actions-setup]
 
 jobs:
   build:

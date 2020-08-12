@@ -29,7 +29,7 @@ jobs:
 
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v2
+        uses: peter-evans/create-pull-request@v3
         env:
           GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_TEST }} 
           GITHUB_ACTOR: HardikSingh97

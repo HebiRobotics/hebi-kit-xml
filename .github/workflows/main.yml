@@ -17,7 +17,6 @@ jobs:
           git clone https://github.com/HardikSingh97/hello-github-actions.git
           echo "~~~~~~ We're done with the cloning. ~~~~~"
 
-
       - name: Copy over latest hrdf folder
         run: |
           cp -R hrdf hello-github-actions
@@ -27,13 +26,30 @@ jobs:
           cd hello-github-actions
           echo ${{ github.actor }}
 
+      - uses: actions/upload-artifact@v1
+        with:
+          name: python-repo-updated
+          path: ./hello-github-actions
 
 
-      - name: Createt Pull Request
+  pullRequest:
+    needs: [build]
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: action/checkout@v2
+      
+      - uses: actions/download-artifact@v1
+        with:
+          name: python-repo-updated
+          path: ./hello-github-actions
+
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.HARDIK_TOKEN_TEST }}
           path: ./hello-github-actions
+          title: Update to list of HRDF files
+          draft: true
 
       # - name: Create Pull Request
       #   uses: peter-evans/create-pull-request@v3

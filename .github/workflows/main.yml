@@ -1,68 +1,92 @@
-name: Auto-PR Workflow
+name: Trigger Example Repo HRDF Updates
 on:
   push:
-    branches: [hardik/actions-setup]
+    brances: [hardik/actions-setup]
 
 jobs:
   build:
-    name: Update Python Repo
+    name: Testing with hello-github-actions
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Clone the python repo
-        run: |
-          git config --global user.name 'Hardik Singh'
-          git config --global user.email 'singh.hardik1997@gmail.com'
-          git clone https://github.com/HardikSingh97/hello-github-actions.git
-          echo "~~~~~~ We're done with the cloning. ~~~~~"
 
-      - name: Copy over latest hrdf folder
-        run: |
-          cp -R hrdf hello-github-actions
-          echo "~~~ The new list of hrdf files: ~~~"
-          ls hello-github-actions
-          echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
-          cd hello-github-actions
-          echo ${{ github.actor }}
-
-      - uses: actions/upload-artifact@v1
-        with:
-          name: python-repo-updated
-          path: ./hello-github-actions
-
-
-  pullRequest:
-    needs: [build]
-    name: Create Pull Request
-    runs-on: ubuntu-16.04
-    steps:
-      - uses: actions/checkout@v2
-      
-      - uses: actions/download-artifact@v1
-        with:
-          name: python-repo-updated
-          path: ./hello-github-actions
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.HARDIK_TOKEN_TEST }}
-          path: ./hello-github-actions
-          title: Update to list of HRDF files
-          draft: true
+          repository: HardikSingh97/hello-github-actions
+          event-type: hrdf-auto-pr
+          
 
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v3
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_TEST }} 
-      #     GITHUB_ACTOR: HardikSingh97
-      #   with:
-      #     #token: ${{ secrets.HARDIK_TOKEN_TEST }} 
-      #     path: ./hello-github-actions
-      #     #branch: hardik/automatic_pull_request
-      #     title: Update to list of HRDF files
-      #     draft: true 
+
+# name: Auto-PR Workflow
+# on:
+#   push:
+#     branches: [hardik/actions-setup]
+
+# jobs:
+#   build:
+#     name: Update Python Repo
+#     runs-on: ubuntu-16.04
+#     steps:
+#       - uses: actions/checkout@v2
+      
+#       - name: Clone the python repo
+#         run: |
+#           git config --global user.name 'Hardik Singh'
+#           git config --global user.email 'singh.hardik1997@gmail.com'
+#           git clone https://github.com/HebiRobotics/hebi-hrdf.git
+#           echo "~~~~~~ We're done with the cloning. ~~~~~"
+
+#       - name: Copy over latest hrdf folder
+#         run: |
+#           cp -R hrdf hello-github-actions
+#           echo "~~~ The new list of hrdf files: ~~~"
+#           ls hello-github-actions
+#           echo "~~~~~~ Latest hrdf updates have been copied over. ~~~~~"
+#           cd hello-github-actions
+#           echo ${{ github.actor }}
+
+#       - uses: actions/upload-artifact@v1
+#         with:
+#           name: python-repo-updated
+#           path: ./hello-github-actions
+
+
+#   pullRequest:
+#     needs: [build]
+#     name: Create Pull Request
+#     runs-on: ubuntu-16.04
+#     steps:
+#       - uses: actions/checkout@v2
+      
+#       - uses: actions/download-artifact@v1
+#         with:
+#           name: python-repo-updated
+#           path: ./hello-github-actions
+
+#       - name: Show the folder
+#         run: 
+
+#       - name: Create Pull Request
+#         uses: peter-evans/create-pull-request@v3
+#         with:
+#           token: ${{ secrets.HARDIK_TOKEN_TEST }}
+#           path: ./hello-github-actions
+#           title: Update to list of HRDF files
+#           draft: true
+
+#       # - name: Create Pull Request
+#       #   uses: peter-evans/create-pull-request@v3
+#       #   env:
+#       #     GITHUB_TOKEN: ${{ secrets.HARDIK_TOKEN_TEST }} 
+#       #     GITHUB_ACTOR: HardikSingh97
+#       #   with:
+#       #     #token: ${{ secrets.HARDIK_TOKEN_TEST }} 
+#       #     path: ./hello-github-actions
+#       #     #branch: hardik/automatic_pull_request
+#       #     title: Update to list of HRDF files
+#       #     draft: true 
 
               
 

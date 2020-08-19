@@ -1,7 +1,7 @@
 name: Trigger Example Repo HRDF Updates
 on:
   push:
-    brances: [hardik/actions-setup]
+    branches: [hardik/actions-setup]
 
 jobs:
   build:
@@ -19,7 +19,6 @@ jobs:
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
           
-
 
 # name: Auto-PR Workflow
 # on:

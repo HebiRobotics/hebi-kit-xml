@@ -18,7 +18,6 @@ jobs:
           event-type: hrdf-auto-pr
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
-          
 
 # name: Auto-PR Workflow
 # on:

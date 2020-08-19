@@ -16,7 +16,8 @@ jobs:
           token: ${{ secrets.HARDIK_TOKEN_TEST }}
           repository: HardikSingh97/hello-github-actions
           event-type: hrdf-auto-pr
-          
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
           
 
 
